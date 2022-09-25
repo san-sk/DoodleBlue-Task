@@ -3,8 +3,6 @@ package com.san.doodleblue.ui.restaurant
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -55,19 +53,9 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
 
     private fun observeCartItems() {
         viewModel.cartItems.observe(viewLifecycleOwner) { list ->
-            list?.let {
-                menuItemAdapter.submitList(it)
-                binding.tvTotalAmount.text = calculateAmount(it).toString()
-            }
-
+            binding.tvTotalAmount.text = list?.sumOf { it.totalPrice }.toString()
+            menuItemAdapter.submitList(list)
         }
     }
-
-    private fun calculateAmount(list: List<MenuItem>?): Double {
-        var amount = 0.0
-        list?.forEach { amount += it.count * it.price }
-        return amount
-    }
-
 
 }

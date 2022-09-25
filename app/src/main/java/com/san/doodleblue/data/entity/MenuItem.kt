@@ -10,5 +10,8 @@ data class MenuItem(
     val name: String,
     val description: String,
     val price: Double,
-    var count: Int = 0
-)
+    val count: Int
+) {
+    val totalPrice: Double
+        get() = count * price
+}

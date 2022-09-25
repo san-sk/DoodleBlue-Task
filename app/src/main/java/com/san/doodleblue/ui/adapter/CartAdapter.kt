@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.san.doodleblue.data.entity.MenuItem
 import com.san.doodleblue.databinding.ItemMenuBinding
 
-class MenuItemAdapter(val callaBack: (item: MenuItem) -> Unit) :
+class CartAdapter(val callaBack: (item: MenuItem) -> Unit) :
     ListAdapter<MenuItem, RecyclerView.ViewHolder>(MenuItemDiffCallback()) {
 
     class MenuItemDiffCallback : DiffUtil.ItemCallback<MenuItem>() {
@@ -27,6 +27,7 @@ class MenuItemAdapter(val callaBack: (item: MenuItem) -> Unit) :
             return oldItem == newItem
         }
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MenuItemHolder(

@@ -3,8 +3,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="inka_restaurant">Inka Restaurant</string>
-    <string name="card_body_text1"><![CDATA[&#9824]]> 5.0(200+) | All days: 9:00 AM - 6:00 PM</string>
-    <string name="card_body_text2">Reach us at: 9945345345</string>
+    <string name="card_body_text1">⭐ 5.0(200+) | All days: 9:00 AM - 6:00 PM</string>
+    <string name="card_body_text2">✆ Reach us at: 9945345345</string>
     <string name="book_a_table">Book A Table</string>
     <string name="starter">Starter</string>
     <string name="view_cart">View Cart (%1$d Items)</string>

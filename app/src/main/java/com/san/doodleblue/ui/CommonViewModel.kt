@@ -7,8 +7,11 @@ import androidx.lifecycle.viewModelScope
 import com.san.doodleblue.data.entity.MenuItem
 import com.san.doodleblue.repository.MenuRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,14 +21,10 @@ class CommonViewModel @Inject constructor(private val repository: MenuRepository
     private val _menuItems = MutableLiveData<List<MenuItem>>(null)
     val menuItems: LiveData<List<MenuItem>> = _menuItems
 
-    private val _cartItems = MutableLiveData<List<MenuItem>>(null)
-    val cartItems: LiveData<List<MenuItem>> = _cartItems
-
 
     init {
         viewModelScope.launch {
-           /* getMenuItems()
-            getCartItems()*/
+            getMenuItems()
         }
     }
 
@@ -35,25 +34,16 @@ class CommonViewModel @Inject constructor(private val repository: MenuRepository
         }
     }
 
-    private suspend fun getCartItems() {
-        repository.getCartList().collectLatest {
-            _cartItems.value = it
-        }
-    }
-
-    suspend fun insertMenuItem(menuItem: MenuItem) {
-        repository.insertMenuItem(menuItem)
-    }
-
-    suspend fun updateMenuItem(menuItem: MenuItem) {
-        repository.updateMenuItem(menuItem)
-    }
-
-    suspend fun insertSampleData(list: List<MenuItem>) {
-        list.forEach {
+    suspend fun insertSampleData() {
+        listOf(
+            MenuItem(1, "Mutton Biryani", "Mutton Full", 250.0, 0),
+            MenuItem(2, "Chicken Fry", "Fried Chicken 6 pcs", 100.0, 0),
+            MenuItem(3, "Egg", "Boiled Egg", 15.0, 0),
+            MenuItem(4, "Pron Fry", "Fired Pron 10pcs", 200.0, 0),
+            MenuItem(5, "Chicken Biryani", "Chicken Full", 150.0, 0),
+        ).forEach {
             repository.insertMenuItem(it)
         }
-
     }
 
 }
