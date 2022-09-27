@@ -1,6 +1,6 @@
-package com.san.doodleblue.repository
+package com.san.doodleblue.core.repository
 
-import com.san.doodleblue.data.entity.MenuItem
+import com.san.doodleblue.core.data.entity.MenuItem
 import kotlinx.coroutines.flow.Flow
 
 interface MenuRepository {

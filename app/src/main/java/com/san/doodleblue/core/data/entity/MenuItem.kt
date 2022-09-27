@@ -1,4 +1,4 @@
-package com.san.doodleblue.data.entity
+package com.san.doodleblue.core.data.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

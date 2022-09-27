@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.san.doodleblue.data.entity.MenuItem
+import com.san.doodleblue.core.data.entity.MenuItem
 import com.san.doodleblue.databinding.ItemMenuBinding
 
 class CartAdapter(val callaBack: (item: MenuItem) -> Unit) :

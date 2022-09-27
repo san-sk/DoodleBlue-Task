@@ -1,11 +1,8 @@
 package com.san.doodleblue.ui.restaurant
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.san.doodleblue.data.entity.MenuItem
-import com.san.doodleblue.repository.MenuRepository
+import androidx.lifecycle.*
+import com.san.doodleblue.core.data.entity.MenuItem
+import com.san.doodleblue.core.repository.MenuRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -17,6 +14,8 @@ class HomeViewModel @Inject constructor(private val repository: MenuRepository) 
 
     private val _menuItems = MutableLiveData<List<MenuItem>>(null)
     val menuItems: LiveData<List<MenuItem>> = _menuItems
+
+    val cartCount = Transformations.map(menuItems) { it?.sumOf { it.count } }
 
 
     init {

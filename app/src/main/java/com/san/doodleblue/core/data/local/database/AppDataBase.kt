@@ -1,8 +1,8 @@
-package com.san.doodleblue.data.local.database
+package com.san.doodleblue.core.data.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.san.doodleblue.data.entity.MenuItem
+import com.san.doodleblue.core.data.entity.MenuItem
 
 
 @Database(

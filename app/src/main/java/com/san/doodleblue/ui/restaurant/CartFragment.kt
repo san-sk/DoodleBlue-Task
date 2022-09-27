@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.san.doodleblue.R
-import com.san.doodleblue.data.entity.MenuItem
 import com.san.doodleblue.databinding.FragmentCartBinding
 import com.san.doodleblue.ui.adapter.MenuItemAdapter
 import dagger.hilt.android.AndroidEntryPoint

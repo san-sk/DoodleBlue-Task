@@ -1,11 +1,11 @@
-package com.san.doodleblue.data.local.database
+package com.san.doodleblue.core.data.local.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.san.doodleblue.data.entity.MenuItem
+import com.san.doodleblue.core.data.entity.MenuItem
 import kotlinx.coroutines.flow.Flow
 
 @Dao

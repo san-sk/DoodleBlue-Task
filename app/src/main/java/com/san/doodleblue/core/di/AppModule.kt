@@ -1,11 +1,11 @@
-package com.san.doodleblue.di
+package com.san.doodleblue.core.di
 
 import android.app.Application
 import androidx.room.Room
-import com.san.doodleblue.data.local.database.AppDatabase
-import com.san.doodleblue.data.local.database.MenuDao
-import com.san.doodleblue.repository.MenuRepository
-import com.san.doodleblue.repository.MenuRepositoryImpl
+import com.san.doodleblue.core.data.local.database.AppDatabase
+import com.san.doodleblue.core.data.local.database.MenuDao
+import com.san.doodleblue.core.repository.MenuRepository
+import com.san.doodleblue.core.repository.MenuRepositoryImpl
 import com.san.doodleblue.utils.AppConfig
 import dagger.Module
 import dagger.Provides
