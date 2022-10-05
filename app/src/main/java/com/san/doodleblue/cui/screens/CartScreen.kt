@@ -6,8 +6,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,18 +16,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.san.doodleblue.cui.theme.DoodleBlueTheme
-import com.san.doodleblue.cui.widgets.CartList
+import com.san.doodleblue.cui.widgets.CartListView
 import com.san.doodleblue.ui.restaurant.CartViewModel
 import kotlinx.coroutines.launch
 
 @Composable
-fun CartScreen(modifier: Modifier = Modifier, onBackPressed: () -> Unit) {
+fun CartScreen(
+    modifier: Modifier = Modifier,
+    onBackPressed: () -> Unit
+) {
     val viewModel: CartViewModel = hiltViewModel()
     val coroutineScope = rememberCoroutineScope()
 
-    val items by viewModel.cartItemVisibleList.observeAsState(listOf())
-    val totalAmount by viewModel.totalAmount.observeAsState(0.0)
-    val showMore by viewModel.showMore.observeAsState()
+    val items by viewModel.cartItems.collectAsState(listOf())
+    val totalAmount by viewModel.totalAmount.collectAsState(0.0)
+
 
     Column(modifier.fillMaxWidth()) {
         Box(
@@ -73,25 +76,15 @@ fun CartScreen(modifier: Modifier = Modifier, onBackPressed: () -> Unit) {
 
             }
         }
-
-        CartList(
-            Modifier.weight(70f),
-            menus = items ?: listOf()
-        ) {
-            coroutineScope.launch {
-                viewModel.updateMenuItem(it)
+        CartListView(modifier = Modifier.weight(70f),
+            menus = items,
+            canShow = items.size > 2,
+            callBack = {
+                coroutineScope.launch {
+                    viewModel.updateMenuItem(it)
+                }
             }
-        }
-
-        if (showMore == true) {
-            TextButton(onClick = {
-                viewModel.showMore.value = false
-            }) {
-                Text(text = "Show More")
-            }
-        }
-
-
+        )
     }
 }
 

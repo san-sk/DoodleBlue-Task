@@ -51,10 +51,10 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
     }
 
     private fun observeCartItems() {
-        viewModel.cartItems.observe(viewLifecycleOwner) { list ->
+        /*viewModel.cartItems.observe(viewLifecycleOwner) { list ->
             binding.tvTotalAmount.text = list?.sumOf { it.totalPrice }.toString()
             menuItemAdapter.submitList(list)
-        }
+        }*/
     }
 
 }
